@@ -10,8 +10,8 @@ void setup()
   size(650, 650);
   background(170, 240, 209);
 
-myFont = loadFont("MuseoSlab-700-48.vlw");
-textFont(myFont, 48);
+  myFont = loadFont("MuseoSlab-700-48.vlw");
+  textFont(myFont, 48);
 }
   
 
