@@ -18,35 +18,23 @@ public class rita_test extends PApplet {
 
 
 
-RiText[] rts = new RiText[3];
-String[] abstractText;
-String[] abstractWords;
-
+RiString rs;
 String[] myVerbs = new String[0];
 
-RiLexicon lexicon;
-
-RiString rs;
+PFont myFont;
 
 public void setup()
 {
   size(650, 650);
+  background(170, 240, 209);
 
-  RiText.defaultFontSize(30);
-  RiText.defaults.alignment = CENTER;
-  
-  rts[0] = new RiText(this, "click to", width / 2, 75);
-  rts[1] = new RiText(this, "parse", width / 2, 110);
-  rts[2] = new RiText(this, "abstract", width / 2, 145);
-
-  abstractText = loadStrings("abstract.txt");
-
+myFont = loadFont("MuseoSlab-700-48.vlw");
+textFont(myFont, 48);
 }
   
 
 public void draw()
 {
-  // background(230, 240, 255);
 
   // parseText();
 }
