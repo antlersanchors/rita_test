@@ -43,7 +43,6 @@ void parseText() {
 
 void displayVerbs() {
   int numVerbs = myVerbs.length;
-  // text(numVerbs, 200, 200);
 
   for (int i=0; i < numVerbs; i++ ) {
     text(myVerbs[i], 50, (50 + 50*i));
