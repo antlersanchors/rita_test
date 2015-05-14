@@ -1,29 +1,42 @@
 import rita.*;
 
+RiMarkov rm;
 RiString rs;
-String[] myVerbs = new String[0];
+String[] targetSpeech = new String[0];
+
+String sourceText;
 
 PFont myFont;
 
-void setup()
-{
-  size(650, 650);
+void setup() {
+  size(1050, 650);
   background(170, 240, 209);
 
   myFont = loadFont("MuseoSlab-700-48.vlw");
   textFont(myFont, 48);
+
+  rm = new RiMarkov(3);
+  rm.loadFrom(new String[] { "wittgenstein.txt", "kafka.txt" }, this);
 }
+
+void draw() {
+
+}
+
+void keyPressed(){
+  getSource();
+  extractWords(sourceText);
+  displayWords();
+  makeSentence();
+}
+
+void getSource() { // get the text we want to parse
+  sourceText = "Your brother created ISIS, a young college student tells Jeb Bush, creating the kind of confrontational moment that presidential candidates dread";
   
-
-void draw()
-{
-
-  // parseText();
 }
 
-void parseText() {
-
-  String incoming = "Your brother created ISIS, a young college student tells Jeb Bush, creating the kind of confrontational moment that presidential candidates dread";
+void extractWords(String s) { //extract words of interest from the text
+  String incoming = s;
 
   rs = new RiString(incoming);
   rs.analyze();
@@ -35,24 +48,33 @@ void parseText() {
     println("pos: "+pos);
 
     if (pos.startsWith("v")) {
-       myVerbs = append(myVerbs, rs.wordAt(i));
+       targetSpeech = append(targetSpeech, rs.wordAt(i));
 
     }
   }
 }
 
-void displayVerbs() {
-  int numVerbs = myVerbs.length;
+void displayWords() {
+  int numWords = targetSpeech.length;
 
-  for (int i=0; i < numVerbs; i++ ) {
-    text(myVerbs[i], 50, (50 + 50*i));
+  for (int i=0; i < numWords; i++ ) {
+    text(targetSpeech[i], 50, (50 + 50*i));
   }
 }
 
-void mouseClicked(){
-  parseText();
-  displayVerbs();
+void makeSentence() {
+  background(170, 240, 209);
+
+  String result = rm.generateSentence();
+  text(result, 50, 300);
+  String[] completions = rm.getCompletions(targetSpeech);
+
+  for (int i=0; i < completions.length; i++){
+    text(completions[i], 50, (50 + 50*i));
+  }
 }
+
+
 
 void wordReplacement() {
 
