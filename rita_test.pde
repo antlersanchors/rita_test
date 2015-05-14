@@ -4,13 +4,15 @@ RiText[] rts = new RiText[3];
 String[] abstractText;
 String[] abstractWords;
 
+String[] myVerbs = new String[0];
+
 RiLexicon lexicon;
 
 RiString rs;
 
 void setup()
 {
-  size(650, 200);
+  size(650, 650);
 
   RiText.defaultFontSize(30);
   RiText.defaults.alignment = CENTER;
@@ -26,9 +28,9 @@ void setup()
 
 void draw()
 {
-  background(230, 240, 255);
+  // background(230, 240, 255);
 
-  parseText();
+  // parseText();
 }
 
 void parseText() {
@@ -41,9 +43,32 @@ void parseText() {
   int wc = rs.wordCount();
 
   for (int i=0; i < wc; i++) {
-    String pos = rs.posAt(wc);
+    String pos = rs.posAt(i);
+    println("pos: "+pos);
+
+    if (pos.startsWith("v")) {
+       myVerbs = append(myVerbs, pos);
+
+    }
+  }
+}
+
+void displayVerbs() {
+  int numVerbs = myVerbs.length;
+  // text(numVerbs, 200, 200);
+
+  for (int i=0; i < numVerbs; i++ ) {
+    
   }
 
+
+  
+
+}
+
+void mouseClicked(){
+  parseText();
+  displayVerbs();
 }
 
 void wordReplacement() {
