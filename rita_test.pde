@@ -2,7 +2,7 @@ import rita.*;
 
 RiMarkov rm;
 RiString rs;
-String[] myVerbs = new String[0];
+String[] targetSpeech = new String[0];
 
 String sourceText;
 
@@ -21,11 +21,21 @@ void setup() {
 
 void draw() {
 
-  sourceText = "Your brother created ISIS, a young college student tells Jeb Bush, creating the kind of confrontational moment that presidential candidates dread";
 }
 
-void extractWords(String s) {
+void mouseClicked(){
+  getSource();
+  extractWords(sourceText);
+  displayWords();
+  makeSentence();
+}
 
+void getSource() { // get the text we want to parse
+  sourceText = "Your brother created ISIS, a young college student tells Jeb Bush, creating the kind of confrontational moment that presidential candidates dread";
+  
+}
+
+void extractWords(String s) { //extract words of interest from the text
   String incoming = s;
 
   rs = new RiString(incoming);
@@ -38,17 +48,17 @@ void extractWords(String s) {
     println("pos: "+pos);
 
     if (pos.startsWith("v")) {
-       myVerbs = append(myVerbs, rs.wordAt(i));
+       targetSpeech = append(targetSpeech, rs.wordAt(i));
 
     }
   }
 }
 
-void displayVerbs() {
-  int numVerbs = myVerbs.length;
+void displayWords() {
+  int numWords = targetSpeech.length;
 
-  for (int i=0; i < numVerbs; i++ ) {
-    text(myVerbs[i], 50, (50 + 50*i));
+  for (int i=0; i < numWords; i++ ) {
+    text(targetSpeech[i], 50, (50 + 50*i));
   }
 }
 
@@ -60,11 +70,6 @@ void makeSentence() {
 
 }
 
-void mouseClicked(){
-  extractWords(sourceText);
-  displayVerbs();
-  makeSentence();
-}
 
 
 void wordReplacement() {
