@@ -28,25 +28,7 @@ void draw()
 {
   background(230, 240, 255);
 
-  String[] words = split(abstractText[0]," ");
-
-  int l = words.length;
-  println("l: "+l);
-
-  String test = "Hello Derp";
-
-  rs = new RiString("Your brother created ISIS, a young college student tells Jeb Bush, creating the kind of confrontational moment that presidential candidates dread");
-  rs.analyze();
-
-  String x = rs.posAt(1);
-  println("x: "+ x);
-  
-  int w = rs.wordCount();
-  println("w: "+w);
-
-  // rs.replaceWord(2, "DERP");
-
-  
+  parseText();
 }
 
 void parseText() {
@@ -56,9 +38,15 @@ void parseText() {
   rs = new RiString(incoming);
   rs.analyze();
 
+  int wc = rs.wordCount();
+
+  for (int i=0; i < wc; i++) {
+    String pos = rs.posAt(wc);
+  }
+
 }
 
 void wordReplacement() {
-  
+
 }
 

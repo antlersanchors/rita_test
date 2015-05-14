@@ -46,25 +46,26 @@ public void draw()
 {
   background(230, 240, 255);
 
-  String[] words = split(abstractText[0]," ");
+  parseText();
+}
 
-  int l = words.length;
-  println("l: "+l);
+public void parseText() {
 
-  String test = "Hello Derp";
+  String incoming = "Your brother created ISIS, a young college student tells Jeb Bush, creating the kind of confrontational moment that presidential candidates dread";
 
-  rs = new RiString("Your brother created ISIS, a young college student tells Jeb Bush, creating the kind of confrontational moment that presidential candidates dread");
+  rs = new RiString(incoming);
   rs.analyze();
 
-  String x = rs.posAt(2);
-  println("x: "+ x);
-  
-  int w = rs.wordCount();
-  println("w: "+w);
+  int wc = rs.wordCount();
 
-  rs.replaceWord(2, "DERP");
+  for (int i=0; i < wc; i++) {
+    String pos = rs.posAt(wc);
+  }
 
-  
+}
+
+public void wordReplacement() {
+
 }
 
   static public void main(String[] passedArgs) {
