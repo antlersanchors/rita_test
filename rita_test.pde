@@ -38,14 +38,27 @@ void draw()
   rs = new RiString("Your brother created ISIS, a young college student tells Jeb Bush, creating the kind of confrontational moment that presidential candidates dread");
   rs.analyze();
 
-  String x = rs.posAt(2);
+  String x = rs.posAt(1);
   println("x: "+ x);
   
   int w = rs.wordCount();
   println("w: "+w);
 
-  rs.replaceWord(2, "DERP");
+  // rs.replaceWord(2, "DERP");
 
+  
+}
+
+void parseText() {
+
+  String incoming = "Your brother created ISIS, a young college student tells Jeb Bush, creating the kind of confrontational moment that presidential candidates dread";
+
+  rs = new RiString(incoming);
+  rs.analyze();
+
+}
+
+void wordReplacement() {
   
 }
 
