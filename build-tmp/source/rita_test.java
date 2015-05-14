@@ -65,7 +65,7 @@ public void parseText() {
     println("pos: "+pos);
 
     if (pos.startsWith("v")) {
-       myVerbs = append(myVerbs, pos);
+       myVerbs = append(myVerbs, rs.wordAt(i));
 
     }
   }
@@ -78,10 +78,6 @@ public void displayVerbs() {
   for (int i=0; i < numVerbs; i++ ) {
     text(myVerbs[i], 50, (50 + 50*i));
   }
-
-
-  
-
 }
 
 public void mouseClicked(){

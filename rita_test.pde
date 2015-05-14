@@ -47,7 +47,7 @@ void parseText() {
     println("pos: "+pos);
 
     if (pos.startsWith("v")) {
-       myVerbs = append(myVerbs, pos);
+       myVerbs = append(myVerbs, rs.wordAt(i));
 
     }
   }
