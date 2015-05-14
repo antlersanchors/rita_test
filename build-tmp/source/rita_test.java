@@ -20,7 +20,7 @@ public class rita_test extends PApplet {
 
 RiMarkov rm;
 RiString rs;
-String[] myVerbs = new String[0];
+String[] targetSpeech = new String[0];
 
 String sourceText;
 
@@ -39,11 +39,21 @@ public void setup() {
 
 public void draw() {
 
-  sourceText = "Your brother created ISIS, a young college student tells Jeb Bush, creating the kind of confrontational moment that presidential candidates dread";
 }
 
-public void parseText(String s) {
+public void keyPressed(){
+  getSource();
+  extractWords(sourceText);
+  displayWords();
+  makeSentence();
+}
 
+public void getSource() { // get the text we want to parse
+  sourceText = "Your brother created ISIS, a young college student tells Jeb Bush, creating the kind of confrontational moment that presidential candidates dread";
+  
+}
+
+public void extractWords(String s) { //extract words of interest from the text
   String incoming = s;
 
   rs = new RiString(incoming);
@@ -56,33 +66,32 @@ public void parseText(String s) {
     println("pos: "+pos);
 
     if (pos.startsWith("v")) {
-       myVerbs = append(myVerbs, rs.wordAt(i));
+       targetSpeech = append(targetSpeech, rs.wordAt(i));
 
     }
   }
 }
 
-public void displayVerbs() {
-  int numVerbs = myVerbs.length;
+public void displayWords() {
+  int numWords = targetSpeech.length;
 
-  for (int i=0; i < numVerbs; i++ ) {
-    text(myVerbs[i], 50, (50 + 50*i));
+  for (int i=0; i < numWords; i++ ) {
+    text(targetSpeech[i], 50, (50 + 50*i));
   }
 }
 
 public void makeSentence() {
-  
+  background(170, 240, 209);
+
   String result = rm.generateSentence();
   text(result, 50, 300);
-  // result = rm.getCompletions([ "the","red"]);
+  String[] completions = rm.getCompletions(targetSpeech);
 
+  for (int i=0; i < completions.length; i++){
+    text(completions[i], 50, (50 + 50*i));
+  }
 }
 
-public void mouseClicked(){
-  parseText(sourceText);
-  displayVerbs();
-  makeSentence();
-}
 
 
 public void wordReplacement() {

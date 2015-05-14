@@ -23,7 +23,7 @@ void draw() {
 
 }
 
-void mouseClicked(){
+void keyPressed(){
   getSource();
   extractWords(sourceText);
   displayWords();
@@ -63,11 +63,15 @@ void displayWords() {
 }
 
 void makeSentence() {
-  
+  background(170, 240, 209);
+
   String result = rm.generateSentence();
   text(result, 50, 300);
-  // result = rm.getCompletions([ "the","red"]);
+  String[] completions = rm.getCompletions(targetSpeech);
 
+  for (int i=0; i < completions.length; i++){
+    text(completions[i], 50, (50 + 50*i));
+  }
 }
 
 
