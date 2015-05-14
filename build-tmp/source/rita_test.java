@@ -69,13 +69,24 @@ public void parseText() {
 
     }
   }
-  
+}
+
+public void displayVerbs() {
   int numVerbs = myVerbs.length;
-  text(numVerbs, 200, 200);
+  // text(numVerbs, 200, 200);
+
+  for (int i=0; i < numVerbs; i++ ) {
+    text(myVerbs[i], 50, (50 + 50*i));
+  }
+
+
+  
+
 }
 
 public void mouseClicked(){
   parseText();
+  displayVerbs();
 }
 
 public void wordReplacement() {
