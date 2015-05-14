@@ -27,14 +27,14 @@ String[] listNYWords;
 String string1;
 
 // Needs to be set to be able to use:
-String tembooUser = "";
-String tembooKey = "";
-String NYTimesKey = "";
+String tembooUser = "antlersanchors";
+String tembooKey = "1a9e84752e534c88ba05044a29ffaf5a";
+String NYTimesKey = "2af8a9c63349693fb6ff967ab90d368c:11:72084575";
 
-String TwitterAccessToken ="";
-String TwitterAccessTokenSecret = "";
-String TwitterConsumerSecret = "";
-String TwittersetConsumerKey = "";
+String TwitterAccessToken ="69679499-taNAAJ4GDIWqz0sIADK93WTRRcuUTaGXElWPsnUJf";
+String TwitterAccessTokenSecret = "iJeYzmoOYBg8j03xwM8MB3ZnSeHHaYJ5hf48ag548Q3Ow";
+String TwitterConsumerSecret = "pJa0zTmK6sv5VHJwrkOAM1N4YyaYvafWIUCt2fXDkCrOZxP6GY";
+String TwittersetConsumerKey = "U2nFS1Oj1UsIQ77MNqEBVpmAP";
 
 // Create a session using your Temboo account application details
 TembooSession session = new TembooSession(tembooUser, "myFirstApp", tembooKey);
@@ -55,6 +55,7 @@ void setup() {
 }
 
 void draw() {
+  background(170, 240, 209, 0.5); // slowly write over the background
 
 }
 
