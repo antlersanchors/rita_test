@@ -51,7 +51,7 @@ void setup() {
 
   // Run the GetMostViewed Choreo function
   runGetMostViewedChoreo();
-  if(step1)runLatestTweetChoreo();
+  
 }
 
 void draw() {
@@ -60,13 +60,16 @@ void draw() {
 }
 
 void keyPressed(){
+  
   getSource();
   extractWords(key, abst); //
   // displayWords();
-  makeSentence();
+  // makeSentence();
+
+  if(step1)runLatestTweetChoreo();
 }
 
-void extractWords(Char k, String s) { //extract words of interest from the text
+String extractWords(Char k, String s) { //extract words of interest from the text
   Char speechChar = k;
   String incoming = s;
 
@@ -84,6 +87,9 @@ void extractWords(Char k, String s) { //extract words of interest from the text
 
     }
   }
+
+  String selectedWord = targetSpeech[random()
+
 }
 
 void displayWords() {
@@ -145,6 +151,9 @@ void runGetMostViewedChoreo() {
   
   listNYWords = split(abst, " ");
   int t = (int) listNYWords.length;
+  // string1 = listNYWords[(int)random(t)];
+  // println(abst, string1);
+
   string1 = listNYWords[(int)random(t)];
   println(abst, string1);
 
